@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 #Getting Shopify Product URL
-print("What is the Shopify products URL? (Please with https:// at the begining)")
+print("What is the Nike SNKRS product URL? (Please with https:// at the begining)")
 url = input() 
 print("------------------------")
 
