@@ -40,3 +40,5 @@ try:
     
 except NameError:
      print('Name Error: size could not be found')
+
+k=input("press close to exit") 
