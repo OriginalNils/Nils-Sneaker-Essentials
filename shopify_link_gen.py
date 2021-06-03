@@ -41,4 +41,5 @@ try:
 except NameError:
      print('Name Error: size could not be found')
 
+print("------------------------")
 k=input("press close to exit") 
