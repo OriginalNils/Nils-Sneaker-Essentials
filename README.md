@@ -24,3 +24,6 @@ Als erstes müsst du das Programm herunterladen. Du lädst es herunter, indem du
 2. Doppel klicke shopify_link_gen.py.
 
 3. Geb alles ein was verlangt wird.
+
+
+Ich bin nicht verantwortlich für irgendetwas mit diesem Script. Alles was ihr damit macht ist auf eigener Gefahr.
