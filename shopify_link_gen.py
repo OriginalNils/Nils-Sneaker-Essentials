@@ -1,30 +1,42 @@
-from urllib.request import urlopen
-import requests
-import xml.etree.ElementTree as ET
-import urllib
+import urllib.request
+from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
-#asking for shopify link
-print("What is the Web Adress of the product? e.g.: https://eu.oneblockdown.it/products/ambush-dunk (Please with https:// infront)")
+#Getting Shopify Product URL
+print("What is the Shopify products URL? (Please with https:// at the begining)")
+url = input() 
+print("------------------------")
 
-#getting shopify link
-link = input()
-print(link)
-url = link +'.xml'
-print(url)
-response = urllib.request.urlopen(url).read()
-#asking for output
-print("Do you want the output in Discord Embed (1) or just normal the links (2)?")
+#Getting Quantity
+print("What Quantity do you want? (At hyped items mostly a Quantaty of 1 is max)")
+quantity = input()
+print("------------------------")
 
-#getting output info
-output = input()
-print(output)
+#Getting Size
+print("Please input the size You want. (In the format like on the website.")
+size = input()
+print("------------------------")
 
-#parsing
-tree = ET.fromstring(response)
-root = tree.getroot()
+#build xml link
+website = urlparse(url)
+baseurl = 'https://'+website.netloc+'/cart/'
+xml = url+'.xml'
+print('Processing...')
 
-for sizecat in root.findall('variant'):
-    id = sizecat.find('id').text
-    size = sizecat.find('option1').text
+#parse variant
+xmlopen = urllib.request.urlopen(xml).read()
+soup = BeautifulSoup(xmlopen, 'xml')
+try:
+    variant = soup.find(text=size).findPrevious('id').text
+    print('variant {} found for size {}'.format(variant, size))
 
-    print(id, size)
+except AttributeError:
+    print('Attribute Error: size could not be found')
+
+#build BD link
+try:
+    BD = baseurl+variant+':'+quantity
+    print('succesfully created backdoor link: {}'.format(BD))
+    
+except NameError:
+     print('Name Error: size could not be found')
