@@ -13,7 +13,7 @@ quantity = input()
 print("------------------------")
 
 #Getting Size
-print("Please input the size You want. (In the format like on the website.")
+print("Please input the size You want. (In the format like on the website.)")
 size = input()
 print("------------------------")
 
